@@ -25,7 +25,8 @@ const App: React.FC = () => {
         {state &&
           <pre>
             last update: {state.lastUpdate} <br />
-            prices assuming BTC/USD: <b>{state.btcusd}</b>
+            prices assuming BTC/USD: <b>{state.btcusd}</b> <br />
+            feel free to post feature request & fork at <a href="https://github.com/mariuszklinger/cryptojumps">github.com</a>
           </pre>
         }
       </div>

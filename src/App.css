@@ -19,3 +19,7 @@
 .root-lead {
   background-color: #eee;
 }
+
+pre {
+  font-size: calc(2px + 2vmin);
+}
