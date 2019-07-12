@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import 'core-js/features/array/find';
-
 import Bar from './components/Bar';
-
-import './App.css';
 import { init, NICE_NUMBERS } from './utils/utils';
+import './App.css';
+
+import 'core-js/features/array/find';
 
 const App: React.FC = () => {
 
@@ -24,7 +23,7 @@ const App: React.FC = () => {
 
         {state &&
           <pre>
-            last update: {state.lastUpdate} <br />
+            last rates update: {state.lastUpdate} <br />
             prices assuming BTC/USD: <b>{state.btcusd}</b> <br />
             feel free to post feature request & fork at <a href="https://github.com/mariuszklinger/cryptojumps">github.com</a>
           </pre>
