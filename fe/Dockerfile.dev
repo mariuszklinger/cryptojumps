@@ -1,0 +1,8 @@
+FROM node:11 as react-build
+WORKDIR /app/fe
+COPY . ./
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

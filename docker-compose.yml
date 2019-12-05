@@ -1,0 +1,22 @@
+version: '3'
+services:
+  # api:
+  #   build: ../cryptojumps-backend
+  #   volumes:
+  #     - ../crypto-data/:/data
+  #   ports:
+  #   - '8080:8080'
+  www:
+    build: ./fe
+    volumes:
+      - ./data/:/data
+    ports:
+    - '80:80'
+    environment:
+      - NODE_ENV=development
+  # cron:
+  #   build: ./be
+  #   env_file:
+  #    - ../cryptojumps-backend/.env.production
+  #   volumes:
+  #     - ../crypto-data/:/data

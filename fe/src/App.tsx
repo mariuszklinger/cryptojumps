@@ -18,6 +18,7 @@ const App: React.FC = () => {
       <h1 className='root-header'>
       1₿ = ...
       </h1>
+
       <div className='root-lead'>
         Check where local currency units will be soon nice and round for 1 BTC
 
