@@ -1,15 +1,24 @@
 version: '3'
 services:
   www:
+    depends_on:
+      - nginx
     build:
       context: ./fe
       dockerfile: Dockerfile.dev
     volumes:
-      - ./fe:/usr/src/
-      - '/usr/src/node_modules'
+      - ./fe/src:/app/src
+      - ./fe/public:/app/public
     environment:
       - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
     ports:
       - '3000:3000'
+      # - '80:80'
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/:/etc/nginx/
+      - ./fe/public/:/var/www/test1/
+    ports:
       - '80:80'
+      # - “443:443”

@@ -28,7 +28,6 @@ export function getNearest(fiatrates: FiatRates, btcusd: number) {
     .entries(btcPrices)
     .forEach(([currency, value]) => {
       NICE_NUMBERS.forEach((n, i, arr) => {
-        // const upperBoundary = n * (1 + epsilon);
         const downBoundary = n * (1 - epsilon);
 
         if (value > downBoundary && value < n) {

@@ -1,74 +1,25 @@
-# # base image
-# # FROM node:12.2.0-alpine
-# FROM node:latest as react-build
-
-# USER root
-
-# # set working directory
-# WORKDIR /app
-# ADD . /app
-
-# # add `/app/node_modules/.bin` to $PATH
-# ENV PATH /app/node_modules/.bin:$PATH
-
-# RUN npm install react-scripts@3.0.1 -g
-# RUN npm install typescript -g
-# RUN npm install node-sass@latest -g
-
-# # install and cache app dependencies
-# COPY package.json /app/package.json
-# RUN npm install
-
-# # start app
-# CMD ["npm", "start"]
-
-
-# FROM node:carbon
-
-# USER root
-
-# ENV PATH=$PATH:/home/node/app/node_modules/.bin
-
-# WORKDIR /app
-
-# RUN npm install react-scripts@3.0.1 -g
-# RUN npm install typescript -g
-# RUN npm install node-sass@latest -g
-
-# COPY package*.json ./
-
-# # Bundle app source
-# COPY . .
-
-# RUN npm install
-
-# CMD ["npm", "start"]
-
 # base image
 FROM node:12.2.0-alpine
 
 USER root
 
 # set working directory
-# RUN mkdir /usr/src/app
-# WORKDIR /usr/src/app
+RUN mkdir /app
+WORKDIR /app
 
-WORKDIR /usr/src
-# ADD . /usr/src
-
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/node_modules/.bin:$PATH
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
 RUN npm install react-scripts@1.1.1 -g --silent
 RUN npm install typescript -g --silent
 RUN npm install node-sass@latest -g --unsafe-perm --silent
 
 # install and cache app dependencies
-COPY package.json /usr/src/package.json
-RUN npm install --silent
+COPY tsconfig.json /app/tsconfig.json
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
 
-RUN ls -la
-RUN touch /usr/src/volume.test.txt
+RUN npm install --silent
 
 # start app
 CMD ["npm", "start"]
