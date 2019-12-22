@@ -11,7 +11,7 @@ services:
     volumes:
       - ./data/:/data
     ports:
-    - '80:80'
+      - '${WEB_SERVER_PORT}:${NGINX_PORT}'
     environment:
       - NODE_ENV=development
   # cron:
