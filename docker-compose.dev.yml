@@ -13,7 +13,6 @@ services:
       - '3000:3000'
 
   cron:
-    env_file: ./.env
     build:
       context: ./cron
       dockerfile: Dockerfile
