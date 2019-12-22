@@ -36,7 +36,7 @@ services:
     environment:
       - NGINX_PORT=${NGINX_PORT}
     # Replace NGINX_PORT with env value.
-    # We tell envsubst to onrly replace NGINX_PORT by using '$$NGINX_PORT'
+    # We tell envsubst to only replace NGINX_PORT by using '$$NGINX_PORT'
     # so vars like $host used by nginx will not be replaced
     # https://github.com/docker-library/docs/issues/496#issuecomment-203003827
     # https://serverfault.com/questions/577370/how-can-i-use-environment-variables-in-nginx-conf#comment1061946_755541
