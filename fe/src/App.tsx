@@ -32,23 +32,24 @@ const App: React.FC = () => {
         }
       </div>
 
-      {state && NICE_NUMBERS.map(num => <>
-        <h1>{num.toLocaleString()}</h1>
+      {state && NICE_NUMBERS.map(num => (
+        <div key={num}>
+          <h1>{num.toLocaleString()}</h1>
 
-        {!!state[num] &&
-          Object
-            .keys(state[num])
-            .map((currency) => (
-              <Bar
-                key={currency}
-                filled={(state[num][currency] / num) * 100}
-                currency={currency}
-                value={(+state[num][currency]).toLocaleString()}
-              />
-            ))
-        }
-      </>
-      )}
+          {!!state[num] &&
+            Object
+              .keys(state[num])
+              .map((currency) => (
+                <Bar
+                  key={currency}
+                  filled={(state[num][currency] / num) * 100}
+                  currency={currency}
+                  value={(+state[num][currency]).toLocaleString()}
+                />
+              ))
+          }
+        </div>
+      ))}
 
       <Footer />
     </div>
