@@ -32,8 +32,8 @@ services:
       - ./fe/public/:/var/www/test1/
     ports:
       - '${WEB_SERVER_PORT}:${NGINX_PORT}'
-    # Set nginx port from .env
+    # Set env for nginx container so envsubst replace it in template
     environment:
       - NGINX_PORT=${NGINX_PORT}
-    # We also need this env replace NGINX_PORT with value from .env
+    # NGINX_PORT with env value
     command: /bin/bash -c "envsubst < /etc/nginx/template/nginx.conf > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
