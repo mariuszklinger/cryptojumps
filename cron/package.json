@@ -1,5 +1,5 @@
 {
-  "name": "cryptojumps-backend",
+  "name": "cryptojumps-cron",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,8 +18,6 @@
   "homepage": "https://github.com/mariuszklinger/cryptojumps-backend#readme",
   "dependencies": {
     "axios": "^0.19.0",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "mongodb": "^3.3.0-beta2"
+    "dotenv": "^8.0.0"
   }
 }

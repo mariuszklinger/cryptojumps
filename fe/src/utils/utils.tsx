@@ -45,10 +45,12 @@ export async function init() {
     getBTCUSDRate().then(({ data }) => Promise.resolve(data))
   ]);
 
+  const btcusd = btcusdData.bpi.USD.rate_float;
+
   return {
-    ...getNearest(fiatrates, btcusdData.rate),
-    lastUpdate: btcusdData.time,
-    btcusd: btcusdData.rate.toLocaleString(),
+    ...getNearest(fiatrates, btcusd),
+    lastUpdate: btcusdData.time.updated,
+    btcusd: btcusd,
   }
 }
 

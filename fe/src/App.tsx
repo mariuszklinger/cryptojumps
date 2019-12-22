@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Bar from './components/Bar';
 import { init, NICE_NUMBERS } from './utils/utils';
-import './App.css';
+import './App.scss';
 
 import 'core-js/features/array/find';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
 
@@ -16,7 +17,7 @@ const App: React.FC = () => {
   return (
     <div className="root">
       <h1 className='root-header'>
-      1₿ = ...
+      1₿itcoin = ...
       </h1>
 
       <div className='root-lead'>
@@ -30,6 +31,7 @@ const App: React.FC = () => {
           </pre>
         }
       </div>
+
       {state && NICE_NUMBERS.map(num => <>
         <h1>{num.toLocaleString()}</h1>
 
@@ -38,6 +40,7 @@ const App: React.FC = () => {
             .keys(state[num])
             .map((currency) => (
               <Bar
+                key={currency}
                 filled={(state[num][currency] / num) * 100}
                 currency={currency}
                 value={(+state[num][currency]).toLocaleString()}
@@ -46,6 +49,8 @@ const App: React.FC = () => {
         }
       </>
       )}
+
+      <Footer />
     </div>
    );
 };
