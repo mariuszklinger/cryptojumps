@@ -1,5 +1,4 @@
 const express = require('express')
-const client = require('./utils/dbConn');
 
 const app = express();
 const port = 8080;
