@@ -31,5 +31,7 @@ yarn.lock
 
 data/fiats/fiat_*
 data/btc/usdbtc_*
+data/fiats/latest.json
+data/btc/latest.json
 
 nginx/nginx.conf

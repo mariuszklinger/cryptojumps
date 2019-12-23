@@ -10,6 +10,9 @@ RUN npm install
 RUN mkdir -p /data/btc
 RUN mkdir -p /data/fiats
 
+COPY /data/btc/latest.example.json /data/btc/latest.json
+COPY /data/fiats/latest.example.json /data/fiats/latest.json
+
 COPY . .
 
 CMD ["nodemon", "./jobs.js"]

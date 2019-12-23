@@ -1,6 +1,8 @@
 version: '3'
 services:
   web:
+    depends_on:
+      - cron
     build:
       context: ./fe
       dockerfile: Dockerfile.dev
