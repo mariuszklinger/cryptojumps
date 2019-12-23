@@ -1,8 +1,8 @@
 version: '3'
 services:
   web:
-    # depends_on:
-    #   - cron
+    depends_on:
+      - rates
     build:
       context: ./fe
       dockerfile: Dockerfile.dev
@@ -14,10 +14,10 @@ services:
     ports:
       - '3000:3000'
 
-  cron:
+  rates:
     env_file: .env
     build:
-      context: ./cron
+      context: ./rates
       dockerfile: Dockerfile
     volumes:
       - ./data/btc:/data/btc
@@ -30,8 +30,8 @@ services:
 
   nginx:
     image: nginx
-    # depends_on:
-    #   - web
+    depends_on:
+      - web
     volumes:
       - ./nginx/:/etc/nginx/
       - ./fe/public/:/var/www/test1/
