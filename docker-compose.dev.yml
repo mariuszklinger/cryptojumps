@@ -1,8 +1,8 @@
 version: '3'
 services:
   web:
-    depends_on:
-      - cron
+    # depends_on:
+    #   - cron
     build:
       context: ./fe
       dockerfile: Dockerfile.dev
@@ -15,18 +15,23 @@ services:
       - '3000:3000'
 
   cron:
-    env_file: ./.env
+    env_file: .env
     build:
       context: ./cron
       dockerfile: Dockerfile
     volumes:
       - ./data/btc:/data/btc
       - ./data/fiats:/data/fiats
+    command: >
+        /bin/bash -c "
+        cp -f /data/btc/latest.example.json /data/btc/latest.json
+        && cp -f /data/fiats/latest.example.json /data/fiats/latest.json"
+
 
   nginx:
     image: nginx
-    depends_on:
-      - web
+    # depends_on:
+    #   - web
     volumes:
       - ./nginx/:/etc/nginx/
       - ./fe/public/:/var/www/test1/
