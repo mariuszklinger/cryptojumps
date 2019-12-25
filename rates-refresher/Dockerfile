@@ -5,9 +5,9 @@ RUN npm install -g nodemon
 
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install
+COPY jobs.js ./
 
 RUN mkdir -p /data/btc
 RUN mkdir -p /data/fiats
 
-COPY . .
+RUN npm install

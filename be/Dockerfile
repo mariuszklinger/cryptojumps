@@ -1,12 +1,14 @@
 FROM node:11
 
-WORKDIR /usr/src/app
+RUN npm install -g nodemon
+
+RUN mkdir -p /app
+WORKDIR /usr
 
 COPY package*.json ./
+COPY index.js ./
 
 RUN npm install
 
-COPY . .
-
 EXPOSE 8080
-CMD [ "node", "index.js" ]
+CMD [ "nodemon", "index.js" ]

@@ -3,6 +3,8 @@ const express = require('express')
 const app = express();
 const port = 8080;
 
+app.get('/', async (_, res) => res.send('omg'));
+
 const btcusd = require('/data/btc/latest.json');
 app.get('/btcusd', async (req, res) => res.send(btcusd));
 
