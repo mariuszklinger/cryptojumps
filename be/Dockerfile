@@ -3,7 +3,7 @@ FROM node:11
 RUN npm install -g nodemon
 
 RUN mkdir -p /app
-WORKDIR /usr
+WORKDIR /app
 
 COPY package*.json ./
 COPY index.js ./

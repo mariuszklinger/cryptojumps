@@ -1,9 +1,12 @@
-const express = require('express')
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const port = 8080;
 
-app.get('/', async (_, res) => res.send('omg'));
+app.use(cors()); // TODO:
+
+app.get('/', async (_, res) => res.send('omg...'));
 
 const btcusd = require('/data/btc/latest.json');
 app.get('/btcusd', async (req, res) => res.send(btcusd));

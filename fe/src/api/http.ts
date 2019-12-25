@@ -1,9 +1,12 @@
 import axios from "axios";
 
+// const host = window.location.origin;
+const host = 'http://localhost';
+
 export function getFiatRates() {
-  return axios.get('./fiat-rates.json');
+  return axios.get(`${host}:8080/fiats`);
 };
 
 export function getBTCUSDRate() {
-  return axios.get('./btc-usd.json');
+  return axios.get(`${host}:8080/btcusd`);
 };
