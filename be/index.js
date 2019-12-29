@@ -7,11 +7,10 @@ const port = 8080;
 
 app.use(cors());
 
-app.get('/', async (_, res) => res.send('omg...'));
-
 app.get('/btcusd', async (req, res) => {
   fs.readFile('/data/btc/latest.json', 'utf8', function (err, data) {
-    res.setHeader('Content-Type', 'application/json');
+    // res.setHeader('Content-Type', 'application/json');
+    res.type('json')
     res.send(data);
     res.end(data);
   });
@@ -19,7 +18,8 @@ app.get('/btcusd', async (req, res) => {
 
 app.get('/fiats', async (req, res) => {
   fs.readFile('/data/fiats/latest.json', 'utf8', function (err, data) {
-    res.setHeader('Content-Type', 'application/json');
+    // res.setHeader('Content-Type', 'application/json');
+    res.type('json')
     res.send(data);
     res.end(data);
   });

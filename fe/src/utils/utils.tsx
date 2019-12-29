@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { getFiatRates, getBTCUSDRate } from "../api/http";
 import currencyCountryMap from './currency-country';
 import populationCountryMap from './population-country';
@@ -11,6 +12,10 @@ export const NICE_NUMBERS = [
   100000,
   1000000
 ].reverse();
+
+function formatDate(date: Date) {
+  return moment(date).format('YYYY/MM/DD hh:mm:ss A');
+}
 
 export function getNearest(fiatrates: FiatRates, btcusd: number) {
 
@@ -34,22 +39,23 @@ export function getNearest(fiatrates: FiatRates, btcusd: number) {
           out[n][currency] = value.toFixed(2);
         }
       })
-    }, out);
+    });
 
   return out;
 }
 
 export async function init() {
   const [fiatrates, btcusdData] = await Promise.all([
-    getFiatRates().then(({ data }) => Promise.resolve(data.rates)),
+    getFiatRates().then(({ data }) => Promise.resolve(data)),
     getBTCUSDRate().then(({ data }) => Promise.resolve(data))
   ]);
 
   const btcusd = btcusdData.bpi.USD.rate_float;
 
   return {
-    ...getNearest(fiatrates, btcusd),
-    lastUpdate: btcusdData.time.updated,
+    ...getNearest(fiatrates.rates, btcusd),
+    lastUpdateBTC: formatDate(new Date(btcusdData.time.updated)),
+    lastUpdateFiats: formatDate(new Date(fiatrates.timestamp * 1000)),
     btcusd: btcusd,
   }
 }
