@@ -1,7 +1,6 @@
 import moment from 'moment';
 import { getFiatRates, getBTCUSDRate } from "../api/http";
-import currencyCountryMap from './currency-country';
-import populationCountryMap from './population-country';
+import countryInfoMap from './country-info';
 
 export interface FiatRates {
   [key: string]: number;
@@ -9,6 +8,8 @@ export interface FiatRates {
 
 export const NICE_NUMBERS = [
   10000,
+  20000,
+  50000,
   100000,
   1000000
 ].reverse();
@@ -61,16 +62,21 @@ export async function init() {
 }
 
 export function getCurrencyInfo(currency: string) {
-  const { country } = currencyCountryMap.find((obj) => obj.currency_code === currency) || {
-    country: 0,
+  const notFound = {
+    name: 'Unknown',
+    population: '-',
+    code: 'AR',
   };
 
-  const { population } = populationCountryMap.find((obj) => obj.country === country) || {
-    population: 0,
-  };
+  const {
+    name,
+    population,
+    code
+  } = countryInfoMap.find((obj) => obj.currency === currency) || notFound;
 
   return {
-    country,
+    code,
+    country: name,
     population: (+population!).toLocaleString(),
   }
 }

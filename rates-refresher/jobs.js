@@ -38,4 +38,5 @@ function updateRates() {
   return Promise.all([p1, p2]);
 }
 
+updateRates();
 setInterval(updateRates, process.env.REFRESH_INTERVAL);

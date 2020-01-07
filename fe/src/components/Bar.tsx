@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import 'flag-icon-css/sass/flag-icon.scss';
 
 import './Bar.scss';
 import { getCurrencyInfo } from '../utils/utils';
@@ -26,6 +27,8 @@ export default function Bar({ filled, currency, value }: Props){
   return (
     <div className='bar-root'>
       <div className='bar' style={style}></div>
+      <span className={`flag-icon flag-icon-${currencyInfo.code.toLowerCase()}`}></span>
+      &nbsp;
       {currency}: {value}
       <div className='currency-info'>
         {currencyInfo.country || 'Unknown'}
