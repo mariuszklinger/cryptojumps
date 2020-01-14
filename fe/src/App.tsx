@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Bar from './components/Bar';
 import { init, NICE_NUMBERS } from './utils/utils';
+
+import 'typeface-poppins';
 import './App.scss';
 
 import 'core-js/features/array/find';
@@ -33,24 +35,30 @@ const App: React.FC = () => {
         }
       </div>
 
-      {state && NICE_NUMBERS.map(num => (
-        <div key={num}>
-          <h1>{num.toLocaleString()}</h1>
+      {state && NICE_NUMBERS.map(num => {
+        if (!Object.keys(state[num]).length) {
+          return null;
+        }
 
-          {!!state[num] &&
-            Object
-              .keys(state[num])
-              .map((currency) => (
-                <Bar
-                  key={currency}
-                  filled={(state[num][currency] / num) * 100}
-                  currency={currency}
-                  value={(+state[num][currency]).toLocaleString()}
-                />
-              ))
-          }
-        </div>
-      ))}
+        return (
+          <div key={num}>
+            <h1>{num.toLocaleString()}</h1>
+
+            {!!state[num] &&
+              Object
+                .keys(state[num])
+                .map((currency) => (
+                  <Bar
+                    key={currency}
+                    filled={(state[num][currency] / num) * 100}
+                    currency={currency}
+                    value={(+state[num][currency]).toLocaleString()}
+                  />
+                ))
+            }
+          </div>
+        );
+      })}
 
       <Footer />
     </div>

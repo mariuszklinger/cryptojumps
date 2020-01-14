@@ -16,6 +16,7 @@
     "react-dom": "^16.8.6",
     "react-hooks-global-state": "^0.14.0",
     "react-scripts": "3.0.1",
+    "typeface-poppins": "0.0.72",
     "typescript": "3.5.2"
   },
   "scripts": {
