@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Bar from './components/Bar';
-import { init, NICE_NUMBERS } from './utils/utils';
+
+import Footer from './components/Footer';
+import Chart from './components/Chart';
+
+import { init } from './utils/utils';
 
 import 'typeface-poppins';
-import './App.scss';
-
 import 'core-js/features/array/find';
-import Footer from './components/Footer';
+import './App.scss';
+import CountryList from './components/CountryList';
 
 const App: React.FC = () => {
 
@@ -35,30 +37,10 @@ const App: React.FC = () => {
         }
       </div>
 
-      {state && NICE_NUMBERS.map(num => {
-        if (!Object.keys(state[num]).length) {
-          return null;
-        }
-
-        return (
-          <div key={num}>
-            <h1>{num.toLocaleString()}</h1>
-
-            {!!state[num] &&
-              Object
-                .keys(state[num])
-                .map((currency) => (
-                  <Bar
-                    key={currency}
-                    filled={(state[num][currency] / num) * 100}
-                    currency={currency}
-                    value={(+state[num][currency]).toLocaleString()}
-                  />
-                ))
-            }
-          </div>
-        );
-      })}
+      <main>
+        <CountryList data={state} />
+        <Chart />
+      </main>
 
       <Footer />
     </div>

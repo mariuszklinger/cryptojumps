@@ -13,9 +13,8 @@ a {
 }
 
 .root-header {
-  background-color: brown;
   margin: 0;
-  color: white;
+  font-size: calc(13vmin);
 }
 
 .root-lead {
@@ -24,4 +23,9 @@ a {
 
 pre {
   font-size: calc(2px + 2vmin);
+}
+
+main {
+  display: flex;
+  max-width: 800px;
 }

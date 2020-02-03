@@ -11,22 +11,22 @@ export interface Props {
 }
 
 export default function Bar({ filled, currency, value }: Props){
-  const [style, setStyle] = useState({});
+  // const [style, setStyle] = useState({});
 
   const currencyInfo = getCurrencyInfo(currency);
 
-  useEffect(() => {
-    setTimeout(() => setStyle({
-      width: `${filled}%`,
-      transitionDuration: '1.5s',
-      transitionDelay: '0.5s',
-      transitionProperty: 'width',
-    }), 1000);
-  });
+  // useEffect(() => {
+  //   setTimeout(() => setStyle({
+  //     width: `${filled}%`,
+  //     transitionDuration: '1.5s',
+  //     transitionDelay: '0.5s',
+  //     transitionProperty: 'width',
+  //   }), 1000);
+  // });
 
   return (
     <div className='bar-root'>
-      <div className='bar' style={style}></div>
+      {/* <div className='bar' style={style}></div> */}
       <span className={`flag-icon flag-icon-${currencyInfo.code.toLowerCase()}`}></span>
       &nbsp;
       {currency}: {value}
