@@ -3,6 +3,7 @@ import 'flag-icon-css/sass/flag-icon.scss';
 
 import './Bar.scss';
 import { getCurrencyInfo } from '../utils/utils';
+import { RADIUS_WIDTH } from './Chart';
 
 export interface Props {
   filled: number;
@@ -10,23 +11,16 @@ export interface Props {
   value: string;
 }
 
-export default function Bar({ filled, currency, value }: Props){
-  // const [style, setStyle] = useState({});
+const style = {
+  height: `${RADIUS_WIDTH}px`,
+  // lineHeight: `${RADIUS_WIDTH}px`,
+}
 
+export default function Bar({ filled, currency, value }: Props){
   const currencyInfo = getCurrencyInfo(currency);
 
-  // useEffect(() => {
-  //   setTimeout(() => setStyle({
-  //     width: `${filled}%`,
-  //     transitionDuration: '1.5s',
-  //     transitionDelay: '0.5s',
-  //     transitionProperty: 'width',
-  //   }), 1000);
-  // });
-
   return (
-    <div className='bar-root'>
-      {/* <div className='bar' style={style}></div> */}
+    <div className='bar-root' style={style}>
       <span className={`flag-icon flag-icon-${currencyInfo.code.toLowerCase()}`}></span>
       &nbsp;
       {currency}: {value}

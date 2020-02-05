@@ -11,7 +11,7 @@ import './Chart.scss';
 
 const arc_colors = ['#F3A54A', '#AA7CAA', '#CCDE66', '#4B90A6'];
 const INNER_RADIUS = 260;
-const RADIUS_WIDTH = 100;
+export const RADIUS_WIDTH = 100;
 
 const SCALE_PADDING = 15;
 
@@ -94,7 +94,7 @@ export default function Chart() {
         .attr('id', g => g.id)
         .style('fill', g => g.fill)
         .attr('outerRadius', (d, i) => INNER_RADIUS + RADIUS_WIDTH + i * 10)
-        .attr('filter', (d, i) => `url(#${SHADOW_ID})`)
+        // .attr('filter', (d, i) => `url(#${SHADOW_ID})`)
         .transition()
         .delay((d, i) => i * 1000)
         .duration(1500)

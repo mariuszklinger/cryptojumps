@@ -6,6 +6,15 @@ export interface FiatRates {
   [key: string]: number;
 }
 
+export interface ChartData {
+  thresholds: {
+    [key: number]: object;
+  };
+  lastUpdateBTC: string;
+  lastUpdateFiats: string;
+  btcusd: number;
+}
+
 export const NICE_NUMBERS = [
   10000,
   20000,
@@ -45,7 +54,7 @@ export function getNearest(fiatrates: FiatRates, btcusd: number) {
   return out;
 }
 
-export async function init() {
+export async function init(): Promise<ChartData> {
   const [fiatrates, btcusdData] = await Promise.all([
     getFiatRates().then(({ data }) => Promise.resolve(data)),
     getBTCUSDRate().then(({ data }) => Promise.resolve(data))
@@ -54,7 +63,7 @@ export async function init() {
   const btcusd = btcusdData.bpi.USD.rate_float;
 
   return {
-    ...getNearest(fiatrates.rates, btcusd),
+    thresholds: getNearest(fiatrates.rates, btcusd),
     lastUpdateBTC: formatDate(new Date(btcusdData.time.updated)),
     lastUpdateFiats: formatDate(new Date(fiatrates.timestamp * 1000)),
     btcusd: btcusd,
