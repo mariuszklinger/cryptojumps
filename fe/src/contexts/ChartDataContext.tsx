@@ -6,7 +6,7 @@ interface ContextValue {
   dispatch: React.Dispatch<any>,
 }
 
-const INIT_STATE: ChartData = {} as ChartData;
+const INIT_STATE: ChartData = { kufa: 1 } as any;
 
 const ChartDataContext = React.createContext({ state: INIT_STATE } as ContextValue);
 
@@ -29,9 +29,7 @@ function ChartDataContextProvider(props: any) {
 
   useEffect(() => {
     init().then((data) => {
-      console.log('init end');
-      console.log(data);
-      dispatch({ action: 'xxx', value: data });
+      dispatch({ action: 'SET', value: data });
     })
   }, []);
 

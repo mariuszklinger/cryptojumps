@@ -89,3 +89,30 @@ export function getCurrencyInfo(currency: string) {
     population: (+population!).toLocaleString(),
   }
 }
+
+export function onWheel(domNode: HTMLElement) {
+
+  let n = 0;
+  let lastScroll = 0;
+
+  const DELTA = 1000;
+
+  return (event: MouseWheelEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const currentTimestamp = +new Date();
+    if (currentTimestamp - lastScroll < DELTA) {
+      return;
+    }
+
+    lastScroll = currentTimestamp;
+
+    const up = event.deltaY > 0;
+
+    n += up ? -1 : 1;
+
+    const change = `${n * 150}px`;
+    domNode.style.marginTop = change;
+  }
+}

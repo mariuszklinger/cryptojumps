@@ -4,14 +4,11 @@ import Footer from './components/Footer';
 import Chart from './components/Chart';
 import CountryList from './components/CountryList';
 
-import { ChartDataContext } from './contexts/ChartDataContext';
-
 import 'typeface-poppins';
 import 'core-js/features/array/find';
 import './App.scss';
 
 const App: React.FC = () => {
-  const { state, dispatch } = React.useContext<any>(ChartDataContext);
 
   return (
     <div className="root">
@@ -33,7 +30,7 @@ const App: React.FC = () => {
       </div>
 
       <main>
-        <CountryList data={state.thresholds} />
+        <CountryList />
         <Chart />
       </main>
 

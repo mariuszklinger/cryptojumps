@@ -20,7 +20,7 @@ export function addShadow(svgDomNode: any) {
     .attr('in', 'blur')
     .attr('dx', 2)
     .attr('dy', 2)
-    .attr('result', 'offsetBlur')
+    .attr('result', 'offsetBlur');
 
   filter.append('feFlood')
     .attr('in', 'offsetBlur')
@@ -38,7 +38,7 @@ export function addShadow(svgDomNode: any) {
     .append('feMerge');
 
   feMerge.append('feMergeNode')
-    .attr('in', 'offsetBlur')
+    .attr('in', 'offsetBlur');
 
   feMerge.append('feMergeNode')
     .attr('in', 'SourceGraphic');
