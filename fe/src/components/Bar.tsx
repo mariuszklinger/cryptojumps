@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'flag-icon-css/sass/flag-icon.scss';
 
 import './Bar.scss';
@@ -6,18 +6,22 @@ import { getCurrencyInfo } from '../utils/utils';
 import { RADIUS_WIDTH } from './Chart';
 
 export interface Props {
-  filled: number;
+  active: boolean;
   currency: string;
+  filled: number;
   value: string;
 }
 
-const style = {
-  height: `${RADIUS_WIDTH}px`,
-  // lineHeight: `${RADIUS_WIDTH}px`,
-}
-
-export default function Bar({ filled, currency, value }: Props){
+export default function Bar({ active, filled, currency, value }: Props){
   const currencyInfo = getCurrencyInfo(currency);
+
+  const style = {
+    height: `${RADIUS_WIDTH}px`,
+    ...(active && {
+      backgroundColor: 'red'
+    }),
+    // lineHeight: `${RADIUS_WIDTH}px`,
+  }
 
   return (
     <div className='bar-root' style={style}>

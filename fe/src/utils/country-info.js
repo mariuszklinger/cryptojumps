@@ -68,7 +68,7 @@ export default [
   {"name":"Ethiopia","code":"ET","currency":"ETB","population":"104957438"},
   {"name":"Falkland Islands (Malvinas)","code":"FK"},
   {"name":"Faroe Islands","code":"FO","currency":"DKK","population":"49290"},
-  {"name":"Fiji","code":"FJ", "currency": "FJD"},
+  {"name":"Fiji","code":"FJ", "currency": "FJD", "population": "926276"},
   {"name":"Finland","code":"FI","currency":"EUR","population":"5523231"},
   {"name":"France","code":"FR","currency":"EUR","population":"64979548"},
   {"name":"French Guiana","code":"GF","currency":"EUR","population":"282731"},

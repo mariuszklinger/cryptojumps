@@ -2,14 +2,20 @@ import moment from 'moment';
 import { getFiatRates, getBTCUSDRate } from "../api/http";
 import countryInfoMap from './country-info';
 
+export interface LocalRate {
+  string: number;
+}
+
 export interface FiatRates {
   [key: string]: number;
 }
 
+export interface ThresholdsMap {
+  [key: number]: FiatRates;
+};
+
 export interface ChartData {
-  thresholds: {
-    [key: number]: object;
-  };
+  thresholds: ThresholdsMap;
   lastUpdateBTC: string;
   lastUpdateFiats: string;
   btcusd: number;
@@ -27,7 +33,7 @@ function formatDate(date: Date) {
   return moment(date).format('YYYY/MM/DD hh:mm:ss A');
 }
 
-export function getNearest(fiatrates: FiatRates, btcusd: number) {
+export function getNearest(fiatrates: FiatRates, btcusd: number): ThresholdsMap {
 
   const out = NICE_NUMBERS.reduce((acc: any, value: number) => ({ ...acc, [value]: {}}), {
     others: {},
@@ -90,19 +96,28 @@ export function getCurrencyInfo(currency: string) {
   }
 }
 
-export function onWheel(domNode: HTMLElement) {
+export function getOffset(el: HTMLElement) {
+  const rect = el.getBoundingClientRect();
+
+  return {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY
+  };
+}
+
+export function onWheel(domNode: HTMLElement, callback: (change: number) => any) {
 
   let n = 0;
   let lastScroll = 0;
 
-  const DELTA = 1000;
+  const MIN_TIME_DELTA = 1000;
 
   return (event: MouseWheelEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
     const currentTimestamp = +new Date();
-    if (currentTimestamp - lastScroll < DELTA) {
+    if (currentTimestamp - lastScroll < MIN_TIME_DELTA) {
       return;
     }
 
@@ -110,9 +125,15 @@ export function onWheel(domNode: HTMLElement) {
 
     const up = event.deltaY > 0;
 
+    if (!up && n === 0) {
+      return;
+    }
+
     n += up ? -1 : 1;
 
-    const change = `${n * 150}px`;
-    domNode.style.marginTop = change;
+    const marginTop = `${n * 124}px`;
+    domNode.style.marginTop = marginTop;
+
+    callback(Math.abs(n));
   }
 }

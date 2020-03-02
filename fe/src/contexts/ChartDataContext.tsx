@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { init, ChartData } from "../utils/utils";
 
-interface ContextValue {
+export interface ContextValue {
   state: ChartData,
   dispatch: React.Dispatch<any>,
 }
 
-const INIT_STATE: ChartData = { kufa: 1 } as any;
+const INIT_STATE: ChartData = {} as any;
 
 const ChartDataContext = React.createContext({ state: INIT_STATE } as ContextValue);
 

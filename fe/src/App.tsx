@@ -3,6 +3,7 @@ import React from 'react';
 import Footer from './components/Footer';
 import Chart from './components/Chart';
 import CountryList from './components/CountryList';
+import CurrentThreshold from './components/CurrentThreshold';
 
 import 'typeface-poppins';
 import 'core-js/features/array/find';
@@ -30,6 +31,7 @@ const App: React.FC = () => {
       </div>
 
       <main>
+        <CurrentThreshold />
         <CountryList />
         <Chart />
       </main>

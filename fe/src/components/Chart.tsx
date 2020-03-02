@@ -64,7 +64,7 @@ export default function Chart() {
     const svg = d3
       .select(svgRef.current)
       // .attr("viewBox", "0 0 300 300")
-      .attr('width', 200)
+      .attr('width', 450)
       // .attr('height', height);
 
     const g1 = svg
