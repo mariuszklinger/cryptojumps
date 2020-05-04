@@ -1,8 +1,11 @@
 .bar-root {
   background-color: #eee;
-  height: 80px;
-  padding-left: 10px;
+  padding: 10px;
   margin-bottom: 10px;
+  box-sizing: content-box;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  max-width: 400px;
 }
 
 .bar {

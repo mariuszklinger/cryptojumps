@@ -198,6 +198,7 @@ export default [
   {"name":"Spain","code":"ES","currency":"EUR","population":"46354321"},
   {"name":"Sri Lanka","code":"LK"},
   {"name":"Sudan","code":"SD","currency":"SDG","population":"40533330"},
+  {"name":"South Sudan","code":"SS","currency":"SSP","population":"10975927"},
   {"name":"Suriname","code":"SR","currency":"SRD","population":"563402"},
   {"name":"Svalbard and Jan Mayen","code":"SJ","currency":null,"population":"3200"},
   {"name":"Swaziland","code":"SZ","currency":"SZL","population":"1008000"},
