@@ -1,27 +1,56 @@
+@import './consts.scss';
+
 a {
   text-decoration: none;
 }
 
 .root {
-  background-color: white;
+  background-color: $background-darky;
   min-height: 100vh;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #282c34;
   text-align: left;
   font-family: poppins;
+  padding: 10px;
+
+}
+
+h1 {
+  color: #E0AC62;
 }
 
 .root-header {
-  background-color: brown;
   margin: 0;
   color: white;
+  font-size: calc(80px + 5vmin);
 }
 
 .root-lead {
-  background-color: #eee;
+  background-color: $background-dark;
+  color: $background-light;
+  margin-left: -10px;
+  width: calc(100% + 20px);
+}
+
+.pre-threshold {
+  color: #d0d0d0;
+  font-size: 5vmin;
+  margin-right: 10px;
 }
 
 pre {
   font-size: calc(2px + 2vmin);
+}
+
+.cols-container {
+  display: flex;
+  margin-top: -65px;
+  min-width: 900px;
+
+  .col {
+    flex: 1;
+    min-width: 300px;
+    margin-right: 10px;
+  }
 }

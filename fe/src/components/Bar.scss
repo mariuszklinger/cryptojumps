@@ -1,16 +1,18 @@
+@import '../consts.scss';
+
 .bar-root {
-  background-color: #eee;
+  background-color: #e8e8e8;
   padding: 10px;
   margin-bottom: 10px;
   box-sizing: content-box;
   border-radius: 10px;
-  border: 2px solid #ddd;
+  border: 2px solid $background-dark;
   max-width: 400px;
 }
 
 .bar {
   box-shadow: 1px 4px 5px #ccc;
-  background-color: brown;
+  background-color: $highlight-lighty-light;
   height: 10px;
   margin-bottom: 18px;
   margin-left: -10px;

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import FadeIn from 'react-fade-in';
+
 import Bar from './components/Bar';
 import { init, NICE_NUMBERS } from './utils/utils';
 
@@ -18,47 +20,60 @@ const App: React.FC = () => {
 
   return (
     <div className="root">
-      <h1 className='root-header'>
-      1₿itcoin = ...
-      </h1>
-
       <div className='root-lead'>
         Check where local currency units will be soon nice and round for 1 BTC
-
-        {state &&
-          <pre>
-            last rates update: {state.lastUpdateBTC} <br />
-            prices assuming BTC/USD: <b>{state.btcusd}</b> <br />
-            last fiats rates update: {state.lastUpdateFiats} <br />
-            feel free to post feature request & fork at <a href="https://github.com/mariuszklinger/cryptojumps">github.com</a>
-          </pre>
-        }
       </div>
 
-      {state && NICE_NUMBERS.map(num => {
-        if (!Object.keys(state[num]).length) {
-          return null;
-        }
+      <h1 className='root-header'>
+        1&nbsp;₿itcoin
+      </h1>
 
-        return (
-          <div key={num}>
-            <h1>{num.toLocaleString()}</h1>
+      <div className="cols-container">
+        {state && NICE_NUMBERS.map(num => {
+          if (!Object.keys(state[num]).length) {
+            return null;
+          }
 
-            {!!state[num] &&
-              Object
-                .keys(state[num])
-                .map((currency) => (
-                  <Bar
-                    key={currency}
-                    filled={(state[num][currency] / num) * 100}
-                    currency={currency}
-                    value={(+state[num][currency]).toLocaleString()}
-                  />
-                ))
-            }
-          </div>
-        );
-      })}
+          return (
+            <div className="col">
+              <FadeIn key={num}>
+                <h1>
+                  <span className="pre-threshold">
+                    is&nbsp;almost
+                  </span>
+                  <br />
+
+                  {num.toLocaleString()}
+                </h1>
+
+                <FadeIn delay={150}>
+                  {!!state[num] &&
+                    Object
+                      .keys(state[num])
+                      .map((currency) => (
+                        <Bar
+                        key={currency}
+                          filled={(state[num][currency] / num) * 100}
+                          currency={currency}
+                          value={(+state[num][currency]).toLocaleString()}
+                          />
+                          ))
+                        }
+                </FadeIn>
+              </FadeIn>
+            </div>
+          );
+        })}
+      </div>
+
+      {state &&
+        <pre>
+          last rates update: {state.lastUpdateBTC} <br />
+          prices assuming BTC/USD: <b>{state.btcusd}</b> <br />
+          last fiats rates update: {state.lastUpdateFiats} <br />
+          feel free to post feature request & fork at <a href="https://github.com/mariuszklinger/cryptojumps">github.com</a>
+        </pre>
+      }
 
       <Footer />
     </div>
