@@ -1,5 +1,10 @@
 @import './consts.scss';
 
+html, body, #root, .App {
+  height: 100%;
+  width: 100%;
+}
+
 a {
   text-decoration: none;
 }
@@ -52,5 +57,11 @@ pre {
     flex: 1;
     min-width: 300px;
     margin-right: 10px;
+
+    h1 {
+      line-height: 0.9;
+      margin-top: 4vmin;
+      margin-bottom: 4vmin;
+    }
   }
 }
