@@ -25,7 +25,7 @@ const App: React.FC = () => {
       </div>
 
       <h1 className='root-header'>
-        1&nbsp;₿itcoin
+        1&nbsp;Bitcoin
       </h1>
 
       <div className="cols-container">

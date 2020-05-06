@@ -11,8 +11,11 @@ export const NICE_NUMBERS = [
   20000,
   50000,
   100000,
+  200000,
+  300000,
+  500000,
   1000000
-].reverse();
+];
 
 function formatDate(date: Date) {
   return moment(date).format('YYYY/MM/DD hh:mm:ss A');

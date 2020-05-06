@@ -1,10 +1,5 @@
 @import './consts.scss';
 
-html, body, #root, .App {
-  height: 100%;
-  width: 100%;
-}
-
 a {
   text-decoration: none;
 }
@@ -16,9 +11,9 @@ a {
   font-size: calc(10px + 2vmin);
   color: #282c34;
   text-align: left;
-  font-family: poppins;
+  font-family: Tahoma,Verdana,Segoe,sans-serif;
   padding: 10px;
-
+  overflow: auto;
 }
 
 h1 {
@@ -28,7 +23,7 @@ h1 {
 .root-header {
   margin: 0;
   color: white;
-  font-size: calc(80px + 5vmin);
+  font-size: 22vmin;
 }
 
 .root-lead {
@@ -50,8 +45,7 @@ pre {
 
 .cols-container {
   display: flex;
-  margin-top: -65px;
-  min-width: 900px;
+  overflow-x: scroll;
 
   .col {
     flex: 1;
