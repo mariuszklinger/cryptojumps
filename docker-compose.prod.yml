@@ -37,6 +37,5 @@ services:
     volumes:
       - ./data/btc:/data/btc
       - ./data/fiats:/data/fiats
-    network_mode: host
     ports:
       - '8080:8080'
