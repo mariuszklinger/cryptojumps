@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import FadeIn from 'react-fade-in';
-
 import Bar from './components/Bar';
 import { init, NICE_NUMBERS } from './utils/utils';
 
@@ -15,7 +14,7 @@ const App: React.FC = () => {
   const [state, setState] = useState(null as any);
 
   useEffect(() => {
-    init().then(setState)
+    init().then(setState);
   }, []);
 
   return (
@@ -49,16 +48,16 @@ const App: React.FC = () => {
                 <FadeIn delay={150}>
                   {!!state[num] &&
                     Object
-                      .keys(state[num])
-                      .map((currency) => (
-                        <Bar
-                        key={currency}
-                          filled={(state[num][currency] / num) * 100}
-                          currency={currency}
-                          value={(+state[num][currency]).toLocaleString()}
-                          />
-                          ))
-                        }
+                    .keys(state[num])
+                    .map((currency) => (
+                      <Bar
+                      key={currency}
+                      filled={(state[num][currency] / num) * 100}
+                      currency={currency}
+                      value={(Math.round(+state[num][currency])).toLocaleString()}
+                      />
+                      ))
+                    }
                 </FadeIn>
               </FadeIn>
             </div>

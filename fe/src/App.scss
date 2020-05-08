@@ -45,7 +45,7 @@ pre {
 
 .cols-container {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   .col {
     flex: 1;
